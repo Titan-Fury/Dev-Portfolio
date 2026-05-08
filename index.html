@@ -917,8 +917,10 @@
             </div>
 
             <div class="gradient-border p-8 md:p-10 rounded-3xl reveal">
-                <!-- NOTE: Replace YOUR_FORMSPREE_ENDPOINT with the unique URL from formspree.io -->
-                <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST" class="space-y-5">
+                <form action="https://formspree.io/f/xjglawav" method="POST" class="space-y-5">
+                    <!-- Honeypot: bots fill this, humans don't. Formspree silently discards. -->
+                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
+                    <input type="hidden" name="_subject" value="New portfolio inquiry">
                     <div class="grid md:grid-cols-2 gap-5">
                         <div>
                             <label for="name" class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-2">Name</label>
