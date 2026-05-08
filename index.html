@@ -7,7 +7,6 @@
     <meta name="theme-color" content="#0a0a0f">
     <meta name="author" content="Soumyajyoti Biswas">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Soumyajyoti Biswas — Software Engineer & AI Specialist">
     <meta property="og:description" content="Production-grade GenAI systems, agentic LLM pipelines, and scalable backend architectures.">
@@ -18,66 +17,40 @@
 
     <title>Soumyajyoti Biswas — Software Engineer & AI Specialist</title>
 
-    <!-- Inline SVG Favicon -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='66' font-family='Inter,sans-serif' font-size='52' font-weight='800' fill='white' text-anchor='middle'%3ESB%3C/text%3E%3C/svg%3E">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        ink: {
-                            950: '#05050a',
-                            900: '#0a0a0f',
-                            800: '#12121a',
-                            700: '#1c1c28',
-                            600: '#2a2a38',
-                        },
-                        brand: {
-                            violet: '#7c3aed',
-                            indigo: '#6366f1',
-                            cyan: '#06b6d4',
-                            mint: '#10b981',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --grad-1: #7c3aed;
-            --grad-2: #06b6d4;
-            --grad-3: #ec4899;
-        }
-        html, body { background: #05050a; }
-        body {
-            font-feature-settings: "ss01", "cv11";
-        }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: { 950: '#05050a', 900: '#0a0a0f', 800: '#12121a' },
+                        brand: { violet: '#7c3aed', indigo: '#6366f1', cyan: '#06b6d4', mint: '#10b981' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
 
-        /* Scrollbar */
+    <style>
+        html, body { background: #05050a; }
+        body { font-feature-settings: "ss01", "cv11"; }
+
         ::-webkit-scrollbar { width: 10px; height: 10px; }
         ::-webkit-scrollbar-track { background: #05050a; }
         ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #7c3aed, #06b6d4); border-radius: 8px; }
         ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #8b5cf6, #22d3ee); }
 
-        /* Glassmorphism */
         .glass {
             background: rgba(18, 18, 26, 0.55);
             backdrop-filter: blur(14px) saturate(140%);
@@ -85,7 +58,6 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        /* Gradient text */
         .text-gradient {
             background: linear-gradient(120deg, #fff 0%, #c4b5fd 35%, #67e8f9 70%, #fff 100%);
             background-size: 200% 200%;
@@ -96,10 +68,10 @@
         }
         @keyframes shimmer {
             0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            50%      { background-position: 100% 50%; }
         }
 
-        /* Animated gradient border (for hero card / featured) */
+        @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
         .gradient-border {
             position: relative;
             border-radius: 1.25rem;
@@ -118,23 +90,9 @@
             animation: rotateBorder 6s linear infinite;
             pointer-events: none;
         }
-        @property --angle {
-            syntax: '<angle>';
-            initial-value: 0deg;
-            inherits: false;
-        }
-        @keyframes rotateBorder {
-            to { --angle: 360deg; }
-        }
+        @keyframes rotateBorder { to { --angle: 360deg; } }
 
-        /* Aurora background */
-        .aurora {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
-        }
+        .aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
         .aurora::before, .aurora::after {
             content: "";
             position: absolute;
@@ -155,16 +113,9 @@
             bottom: -180px; right: -120px;
             animation: drift2 22s ease-in-out infinite alternate;
         }
-        @keyframes drift1 {
-            from { transform: translate(0,0) scale(1); }
-            to   { transform: translate(120px, 80px) scale(1.15); }
-        }
-        @keyframes drift2 {
-            from { transform: translate(0,0) scale(1); }
-            to   { transform: translate(-100px, -60px) scale(1.2); }
-        }
+        @keyframes drift1 { to { transform: translate(120px, 80px) scale(1.15); } }
+        @keyframes drift2 { to { transform: translate(-100px, -60px) scale(1.2); } }
 
-        /* Subtle dot grid */
         .dot-grid {
             background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
             background-size: 28px 28px;
@@ -172,41 +123,35 @@
             -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 40%, transparent 100%);
         }
 
-        /* Spotlight that follows the cursor */
         .spotlight {
             position: fixed;
             pointer-events: none;
             inset: 0;
             z-index: 1;
             background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(124, 58, 237, 0.12), transparent 60%);
-            transition: background 0.1s ease;
         }
 
-        /* Card hover gradient outline */
         .card-glow {
             position: relative;
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .card-glow::after {
             content: "";
             position: absolute; inset: 0;
             border-radius: inherit;
             padding: 1px;
-            background: linear-gradient(135deg, rgba(124,58,237,0), rgba(6,182,212,0));
+            background: linear-gradient(135deg, transparent, transparent);
             -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
             -webkit-mask-composite: xor;
                     mask-composite: exclude;
             transition: background 0.4s;
             pointer-events: none;
         }
-        .card-glow:hover {
-            transform: translateY(-4px);
-        }
+        .card-glow:hover { transform: translateY(-4px); }
         .card-glow:hover::after {
             background: linear-gradient(135deg, rgba(124,58,237,0.6), rgba(6,182,212,0.6));
         }
 
-        /* Marquee */
         .marquee {
             display: flex;
             gap: 3rem;
@@ -215,25 +160,20 @@
         }
         @keyframes scroll {
             from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+            to   { transform: translateX(-50%); }
         }
         .marquee-mask {
             mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
             -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
         }
 
-        /* Reveal-on-scroll */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
             transition: opacity 0.8s cubic-bezier(0.2,0.8,0.2,1), transform 0.8s cubic-bezier(0.2,0.8,0.2,1);
         }
-        .reveal.in {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.in { opacity: 1; transform: translateY(0); }
 
-        /* Noise overlay */
         .noise {
             position: fixed;
             inset: 0;
@@ -243,7 +183,6 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        /* Button gradient */
         .btn-gradient {
             background: linear-gradient(120deg, #7c3aed, #6366f1, #06b6d4);
             background-size: 200% 200%;
@@ -256,53 +195,62 @@
             box-shadow: 0 14px 40px -10px rgba(6,182,212,0.55);
         }
 
-        /* Word cycler */
-        .cycler {
-            display: inline-flex;
-            height: 1.1em;
-            overflow: hidden;
-            vertical-align: bottom;
-        }
+        .cycler { display: inline-flex; height: 1.1em; overflow: hidden; vertical-align: bottom; }
         .cycler-track {
             display: flex;
             flex-direction: column;
-            animation: cycle 9s steps(3) infinite;
+            animation: cycle 9s infinite;
         }
         @keyframes cycle {
-            0%, 33%   { transform: translateY(0); }
-            34%, 66%  { transform: translateY(-100%); }
-            67%, 100% { transform: translateY(-200%); }
+            0%, 28%   { transform: translateY(0); }
+            33%, 61%  { transform: translateY(-100%); }
+            66%, 94%  { transform: translateY(-200%); }
+            100%      { transform: translateY(-300%); }
         }
 
-        /* Ping dot */
         .pulse-dot {
             box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
-            70% { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
+            70%  { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
             100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
         }
 
-        /* Tilted code-block */
-        .code-window {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            line-height: 1.55rem;
-        }
-        .code-window .kw { color: #c4b5fd; }
-        .code-window .fn { color: #67e8f9; }
+        .code-window { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.55rem; }
+        .code-window .kw  { color: #c4b5fd; }
+        .code-window .fn  { color: #67e8f9; }
         .code-window .str { color: #fbbf24; }
-        .code-window .cm { color: #6b7280; font-style: italic; }
+        .code-window .cm  { color: #6b7280; font-style: italic; }
         .code-window .num { color: #f472b6; }
 
-        /* Bento sizing */
-        @media (min-width: 1024px) {
-            .bento-tall { grid-row: span 2; }
-            .bento-wide { grid-column: span 2; }
+        .tag-pill {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: 9999px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #d1d5db;
         }
+        .skill-chip {
+            padding: 0.375rem 0.75rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            color: #d1d5db;
+        }
+        .method-badge {
+            padding: 0.125rem 0.5rem;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            border-radius: 0.375rem;
+        }
+        .method-get  { background: rgba(16,185,129,0.2);  color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+        .method-post { background: rgba(124,58,237,0.2); color: #c4b5fd; border: 1px solid rgba(124,58,237,0.3); }
 
-        /* Section heading kicker */
         .kicker {
             display: inline-flex;
             align-items: center;
@@ -312,19 +260,28 @@
             text-transform: uppercase;
             letter-spacing: 0.18em;
             padding: 0.35rem 0.75rem;
-            border-radius: 999px;
+            border-radius: 9999px;
             border: 1px solid rgba(124, 58, 237, 0.3);
             background: rgba(124, 58, 237, 0.08);
             color: #c4b5fd;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
         }
     </style>
 </head>
 <body class="bg-ink-950 text-gray-300 font-sans antialiased selection:bg-brand-violet selection:text-white overflow-x-hidden">
 
-    <div class="spotlight"></div>
-    <div class="noise"></div>
+    <div class="spotlight" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
 
-    <!-- Sticky Navigation -->
+    <!-- NAV -->
     <nav class="fixed w-full z-50 glass border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-white tracking-tight font-display flex items-center gap-2">
@@ -340,9 +297,10 @@
             <a href="#contact" class="hidden md:inline-flex items-center px-4 py-2 btn-gradient text-white text-sm font-semibold rounded-full">
                 Let's talk <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i>
             </a>
-            <button id="mobileMenuBtn" class="md:hidden text-white" aria-label="Open menu"><i data-lucide="menu"></i></button>
+            <button id="mobileMenuBtn" class="md:hidden text-white" aria-label="Open menu" aria-expanded="false">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
-        <!-- Mobile menu -->
         <div id="mobileMenu" class="md:hidden hidden border-t border-white/5">
             <div class="px-6 py-4 flex flex-col gap-4 text-sm">
                 <a href="#projects" class="text-gray-300 hover:text-white">Projects</a>
@@ -367,11 +325,12 @@
 
                 <h1 class="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white tracking-tight mb-6 leading-[1.02]">
                     I architect
-                    <span class="cycler align-baseline">
-                        <span class="cycler-track">
+                    <span class="cycler align-baseline" aria-label="agentic systems, LLM pipelines, resilient backends">
+                        <span class="cycler-track" aria-hidden="true">
                             <span class="text-gradient">agentic systems</span>
                             <span class="text-gradient">LLM pipelines</span>
                             <span class="text-gradient">resilient backends</span>
+                            <span class="text-gradient">agentic systems</span>
                         </span>
                     </span>
                     <br>that ship.
@@ -393,7 +352,6 @@
                     </a>
                 </div>
 
-                <!-- Stats strip -->
                 <div class="mt-14 grid grid-cols-3 gap-6 max-w-xl">
                     <div>
                         <p class="font-display text-3xl md:text-4xl font-bold text-white">2+</p>
@@ -410,7 +368,6 @@
                 </div>
             </div>
 
-            <!-- Right: code-window mock -->
             <div class="lg:col-span-5 reveal">
                 <div class="gradient-border p-5 md:p-6 rounded-2xl">
                     <div class="flex items-center gap-2 mb-4">
@@ -441,34 +398,11 @@
         </div>
     </section>
 
-    <!-- MARQUEE TICKER -->
-    <section class="py-8 border-y border-white/5 bg-ink-900/50">
+    <!-- MARQUEE -->
+    <section class="py-8 border-y border-white/5 bg-ink-900/50" aria-hidden="true">
         <div class="marquee-mask overflow-hidden">
-            <div class="marquee text-2xl md:text-3xl font-display font-semibold text-gray-500/70">
-                <span class="flex items-center gap-12">
-                    <span>Python</span><span class="text-brand-violet">&bull;</span>
-                    <span>FastAPI</span><span class="text-brand-violet">&bull;</span>
-                    <span>LangChain</span><span class="text-brand-violet">&bull;</span>
-                    <span>RAG</span><span class="text-brand-violet">&bull;</span>
-                    <span>Spring Boot</span><span class="text-brand-violet">&bull;</span>
-                    <span>PostgreSQL</span><span class="text-brand-violet">&bull;</span>
-                    <span>Docker</span><span class="text-brand-violet">&bull;</span>
-                    <span>WatsonX</span><span class="text-brand-violet">&bull;</span>
-                    <span>Agentic AI</span><span class="text-brand-violet">&bull;</span>
-                    <span>Transformers</span><span class="text-brand-violet">&bull;</span>
-                </span>
-                <span class="flex items-center gap-12" aria-hidden="true">
-                    <span>Python</span><span class="text-brand-violet">&bull;</span>
-                    <span>FastAPI</span><span class="text-brand-violet">&bull;</span>
-                    <span>LangChain</span><span class="text-brand-violet">&bull;</span>
-                    <span>RAG</span><span class="text-brand-violet">&bull;</span>
-                    <span>Spring Boot</span><span class="text-brand-violet">&bull;</span>
-                    <span>PostgreSQL</span><span class="text-brand-violet">&bull;</span>
-                    <span>Docker</span><span class="text-brand-violet">&bull;</span>
-                    <span>WatsonX</span><span class="text-brand-violet">&bull;</span>
-                    <span>Agentic AI</span><span class="text-brand-violet">&bull;</span>
-                    <span>Transformers</span><span class="text-brand-violet">&bull;</span>
-                </span>
+            <div class="marquee text-2xl md:text-3xl font-display font-semibold text-gray-500/70" id="marqueeTrack">
+                <!-- populated by JS to avoid markup duplication -->
             </div>
         </div>
     </section>
@@ -483,28 +417,26 @@
                 <p class="text-gray-400 mt-4 max-w-2xl">From cinematic GenAI engines to compliance-belted LLM bots &mdash; each project ships measurable wins.</p>
             </div>
 
-            <!-- FLAGSHIP 1: CogniStream -->
-            <div class="reveal mb-10 gradient-border p-8 md:p-12 rounded-3xl">
+            <!-- FLAGSHIP: CogniStream -->
+            <article class="reveal mb-10 gradient-border p-8 md:p-12 rounded-3xl">
                 <div class="grid lg:grid-cols-12 gap-8 items-start">
                     <div class="lg:col-span-7">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="kicker"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Featured &middot; In Progress</span>
-                        </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">CogniStream AI <span class="text-gray-500 font-normal">— Cinematic Visual Generation Engine</span></h3>
+                        <span class="kicker mb-4"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Featured · In Progress</span>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-4 mb-4">CogniStream AI <span class="text-gray-500 font-normal">— Cinematic Visual Generation Engine</span></h3>
                         <p class="text-gray-400 leading-relaxed mb-6">A fully Dockerized, GPU-accelerated agentic pipeline for automated visual storytelling. Parses narrative scripts into scene graphs, drives multi-model T2I/T2V generation, and composes cinematic output programmatically.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">Python</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">FastAPI</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">SDXL · Wan</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">4-bit Quant</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">Docker · GPU</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">ComfyUI</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Python</span>
+                            <span class="tag-pill">FastAPI</span>
+                            <span class="tag-pill">SDXL · Wan</span>
+                            <span class="tag-pill">4-bit Quant</span>
+                            <span class="tag-pill">Docker · GPU</span>
+                            <span class="tag-pill">ComfyUI</span>
                         </div>
                     </div>
-                    <div class="lg:col-span-5 grid grid-cols-1 gap-3">
+                    <div class="lg:col-span-5 grid gap-3">
                         <div class="glass p-5 rounded-xl card-glow">
                             <div class="flex items-start gap-3">
-                                <i data-lucide="brain-circuit" class="w-5 h-5 text-brand-violet mt-0.5"></i>
+                                <i data-lucide="brain-circuit" class="w-5 h-5 text-brand-violet mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="text-sm font-semibold text-white">Semantic Intelligence</p>
                                     <p class="text-xs text-gray-400 mt-1">Parses scripts into scene graphs &mdash; environment, emotion, lighting, visual keywords.</p>
@@ -513,7 +445,7 @@
                         </div>
                         <div class="glass p-5 rounded-xl card-glow">
                             <div class="flex items-start gap-3">
-                                <i data-lucide="image" class="w-5 h-5 text-brand-cyan mt-0.5"></i>
+                                <i data-lucide="image" class="w-5 h-5 text-brand-cyan mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="text-sm font-semibold text-white">Generative Vision</p>
                                     <p class="text-xs text-gray-400 mt-1">Multi-model SDXL + Wan T2V with seed-controlled stability.</p>
@@ -522,7 +454,7 @@
                         </div>
                         <div class="glass p-5 rounded-xl card-glow">
                             <div class="flex items-start gap-3">
-                                <i data-lucide="clapperboard" class="w-5 h-5 text-pink-400 mt-0.5"></i>
+                                <i data-lucide="clapperboard" class="w-5 h-5 text-pink-400 mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="text-sm font-semibold text-white">Algorithmic Direction</p>
                                     <p class="text-xs text-gray-400 mt-1">Color correction, opacity blending, fade transitions &mdash; programmatic.</p>
@@ -531,23 +463,21 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- FLAGSHIP 2: Vera Engagement Bot -->
-            <div class="reveal mb-16 gradient-border p-8 md:p-12 rounded-3xl">
+            <!-- FLAGSHIP: Vera -->
+            <article class="reveal mb-16 gradient-border p-8 md:p-12 rounded-3xl">
                 <div class="grid lg:grid-cols-12 gap-10 items-start">
                     <div class="lg:col-span-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="kicker"><i data-lucide="bot" class="w-3.5 h-3.5"></i> Featured · magicpin AI Challenge</span>
-                        </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Vera Engagement Bot <span class="text-gray-500 font-normal">— Compliance-Grade LLM Service</span></h3>
+                        <span class="kicker mb-4"><i data-lucide="bot" class="w-3.5 h-3.5"></i> Featured · magicpin AI Challenge</span>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-4 mb-4">Vera Engagement Bot <span class="text-gray-500 font-normal">— Compliance-Grade LLM Service</span></h3>
                         <p class="text-gray-400 leading-relaxed mb-6">A stateless FastAPI bot composing policy-compliant WhatsApp nudges for ~1M magicpin merchants. Four-context RAG bundle, circuit-broken multi-provider LLM chain, and deterministic template bypass &mdash; replay-graded against a live judge harness.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">FastAPI</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">Pydantic v2</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">7 LLM Providers</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">Circuit Breaker</span>
-                            <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-gray-300">Docker</span>
+                            <span class="tag-pill">FastAPI</span>
+                            <span class="tag-pill">Pydantic v2</span>
+                            <span class="tag-pill">7 LLM Providers</span>
+                            <span class="tag-pill">Circuit Breaker</span>
+                            <span class="tag-pill">Docker</span>
                         </div>
                         <div class="flex flex-wrap gap-3">
                             <a href="https://magicpinchallenge-production.up.railway.app/v1/healthz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-colors text-sm font-semibold">
@@ -559,7 +489,6 @@
                         </div>
                     </div>
                     <div class="lg:col-span-6 grid grid-cols-2 gap-3">
-                        <!-- Metric tiles -->
                         <div class="glass p-5 rounded-xl card-glow col-span-2">
                             <p class="text-xs font-mono text-gray-500 uppercase tracking-wider">/v1/tick latency</p>
                             <p class="font-display text-3xl font-bold text-white mt-1">~54s <span class="text-gray-500 text-2xl">→</span> <span class="text-gradient">&lt;0.1s</span></p>
@@ -587,75 +516,39 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- LIVE DEMO -->
-            <div id="vera-demo" class="reveal mb-16 gradient-border p-8 md:p-10 rounded-3xl">
+            <article id="vera-demo" class="reveal mb-16 gradient-border p-8 md:p-10 rounded-3xl">
                 <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
                     <div>
                         <span class="kicker"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot"></span> Live API · Try it</span>
                         <h3 class="font-display text-2xl md:text-3xl font-bold text-white mt-4">Hit the deployed Vera bot</h3>
-                        <p class="text-gray-400 text-sm mt-2 max-w-2xl">Hosted on Railway with a multi-tier fallback chain (Groq → Gemini → OpenRouter). Click any GET endpoint to see live JSON; copy a curl for the POST flows.</p>
+                        <p class="text-gray-400 text-sm mt-2 max-w-2xl">Hosted on Railway with a multi-tier fallback chain (Groq → Gemini → OpenRouter). Click any GET endpoint for live JSON; copy a curl for the POST flows.</p>
                     </div>
-                    <a href="https://magicpinchallenge-production.up.railway.app/v1/healthz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center self-start md:self-auto px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors text-sm font-mono">
-                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i> magicpinchallenge-production.up.railway.app
+                    <a href="https://magicpinchallenge-production.up.railway.app/v1/healthz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center self-start md:self-auto px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors text-xs md:text-sm font-mono">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                        <span class="truncate max-w-[260px] md:max-w-none">magicpinchallenge-production.up.railway.app</span>
                     </a>
                 </div>
 
-                <!-- Endpoint pills -->
-                <div class="grid md:grid-cols-2 gap-3 mb-6">
-                    <a href="https://magicpinchallenge-production.up.railway.app/v1/healthz" target="_blank" rel="noopener noreferrer" class="glass card-glow p-4 rounded-xl flex items-center justify-between group">
-                        <div class="flex items-center gap-3">
-                            <span class="px-2 py-0.5 text-[11px] font-mono font-bold rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">GET</span>
-                            <code class="text-sm font-mono text-white">/v1/healthz</code>
-                            <span class="text-xs text-gray-500 hidden lg:inline">— liveness + context counts</span>
-                        </div>
-                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-500 group-hover:text-white transition-colors"></i>
-                    </a>
-                    <a href="https://magicpinchallenge-production.up.railway.app/v1/metadata" target="_blank" rel="noopener noreferrer" class="glass card-glow p-4 rounded-xl flex items-center justify-between group">
-                        <div class="flex items-center gap-3">
-                            <span class="px-2 py-0.5 text-[11px] font-mono font-bold rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">GET</span>
-                            <code class="text-sm font-mono text-white">/v1/metadata</code>
-                            <span class="text-xs text-gray-500 hidden lg:inline">— team, model, approach</span>
-                        </div>
-                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-500 group-hover:text-white transition-colors"></i>
-                    </a>
-                    <div class="glass p-4 rounded-xl flex items-center gap-3">
-                        <span class="px-2 py-0.5 text-[11px] font-mono font-bold rounded-md bg-brand-violet/20 text-violet-300 border border-brand-violet/30">POST</span>
-                        <code class="text-sm font-mono text-white">/v1/context</code>
-                        <span class="text-xs text-gray-500 hidden lg:inline">— ingest versioned context</span>
-                    </div>
-                    <div class="glass p-4 rounded-xl flex items-center gap-3">
-                        <span class="px-2 py-0.5 text-[11px] font-mono font-bold rounded-md bg-brand-violet/20 text-violet-300 border border-brand-violet/30">POST</span>
-                        <code class="text-sm font-mono text-white">/v1/tick</code>
-                        <span class="text-xs text-gray-500 hidden lg:inline">— batch-compose actions</span>
-                    </div>
-                    <div class="glass p-4 rounded-xl flex items-center gap-3">
-                        <span class="px-2 py-0.5 text-[11px] font-mono font-bold rounded-md bg-brand-violet/20 text-violet-300 border border-brand-violet/30">POST</span>
-                        <code class="text-sm font-mono text-white">/v1/reply</code>
-                        <span class="text-xs text-gray-500 hidden lg:inline">— send / wait / end decision</span>
-                    </div>
-                    <div class="glass p-4 rounded-xl flex items-center gap-3">
-                        <span class="px-2 py-0.5 text-[11px] font-mono font-bold rounded-md bg-brand-violet/20 text-violet-300 border border-brand-violet/30">POST</span>
-                        <code class="text-sm font-mono text-white">/v1/teardown</code>
-                        <span class="text-xs text-gray-500 hidden lg:inline">— clear in-memory state</span>
-                    </div>
+                <div class="grid md:grid-cols-2 gap-3 mb-6" id="endpoints">
+                    <!-- populated by JS -->
                 </div>
 
-                <!-- curl example with copy button -->
                 <div class="glass rounded-xl overflow-hidden border border-white/10">
                     <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/5 bg-ink-900/60">
                         <div class="flex items-center gap-2">
                             <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
                             <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
                             <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
-                            <span class="ml-2 text-xs font-mono text-gray-500">curl example — POST /v1/context</span>
+                            <span class="ml-2 text-xs font-mono text-gray-500">curl example</span>
                         </div>
-                        <button id="copyCurl" class="text-xs font-mono text-gray-400 hover:text-white inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-white/5 transition">
+                        <button id="copyCurl" class="text-xs font-mono text-gray-400 hover:text-white inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-white/5 transition" type="button" aria-label="Copy curl example to clipboard">
                             <i data-lucide="copy" class="w-3.5 h-3.5"></i> <span id="copyLabel">copy</span>
                         </button>
                     </div>
-                    <pre id="curlSnippet" class="code-window text-gray-300 px-5 py-4 overflow-x-auto text-[12px] leading-6"><code><span class="cm"># health check (no body)</span>
+                    <pre id="curlSnippet" class="code-window text-gray-300 px-5 py-4 overflow-x-auto text-[12px] leading-6"><code><span class="cm"># health check</span>
 <span class="kw">curl</span> https://magicpinchallenge-production.up.railway.app<span class="str">/v1/healthz</span>
 
 <span class="cm"># ingest a merchant context</span>
@@ -678,64 +571,12 @@
   -H <span class="str">"Content-Type: application/json"</span> \
   -d <span class="str">'{ "now": "2026-05-09T10:00:00Z", "available_triggers": ["trg_001"] }'</span></code></pre>
                 </div>
-            </div>
+            </article>
 
             <!-- BENTO: Other Projects -->
             <h3 class="font-display text-2xl md:text-3xl font-bold text-white mb-8 reveal">More from the lab</h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-                <!-- Cricket Predictor -->
-                <a href="https://github.com/Titan-Fury" target="_blank" rel="noopener noreferrer" class="glass card-glow p-6 rounded-2xl flex flex-col h-full reveal group">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-violet/20 to-brand-cyan/20 border border-white/10 flex items-center justify-center">
-                            <i data-lucide="activity" class="text-brand-cyan w-5 h-5"></i>
-                        </div>
-                        <i data-lucide="arrow-up-right" class="text-gray-500 group-hover:text-white transition-colors w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2">Cricket Score Predictor</h4>
-                    <p class="text-sm text-gray-400 flex-grow">XGBoost-driven end-to-end ML app analyzing 1,500+ matches; 82% accuracy with sub-200ms predictions.</p>
-                    <div class="flex flex-wrap gap-2 mt-5 pt-5 border-t border-white/5">
-                        <span class="text-xs text-gray-400 font-mono">Python</span>
-                        <span class="text-xs text-gray-400 font-mono">XGBoost</span>
-                        <span class="text-xs text-gray-400 font-mono">Pickle</span>
-                    </div>
-                </a>
-
-                <!-- Athenaeum -->
-                <a href="https://github.com/Titan-Fury" target="_blank" rel="noopener noreferrer" class="glass card-glow p-6 rounded-2xl flex flex-col h-full relative overflow-hidden reveal group">
-                    <div class="absolute -right-8 -top-8 w-32 h-32 bg-brand-violet/15 rounded-full blur-2xl"></div>
-                    <div class="flex justify-between items-start mb-4 relative z-10">
-                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-yellow-500/20 to-brand-violet/20 border border-yellow-500/20 flex items-center justify-center">
-                            <i data-lucide="award" class="text-yellow-400 w-5 h-5"></i>
-                        </div>
-                        <i data-lucide="arrow-up-right" class="text-gray-500 group-hover:text-white transition-colors w-5 h-5 relative z-10"></i>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2 relative z-10">Athenaeum (E-Learning)</h4>
-                    <p class="text-sm text-gray-400 flex-grow relative z-10">Scalable platform with live classes, forums, and NLP-powered automated grading for descriptive answers.</p>
-                    <p class="text-xs text-yellow-400 font-semibold mt-3 relative z-10">🏆 Top 15 Finalist · India 2021 (120+ colleges)</p>
-                    <div class="flex flex-wrap gap-2 mt-5 pt-5 border-t border-white/5 relative z-10">
-                        <span class="text-xs text-gray-400 font-mono">Backend</span>
-                        <span class="text-xs text-gray-400 font-mono">NLP</span>
-                        <span class="text-xs text-gray-400 font-mono">ML</span>
-                    </div>
-                </a>
-
-                <!-- Cardiac -->
-                <a href="https://github.com/Titan-Fury" target="_blank" rel="noopener noreferrer" class="glass card-glow p-6 rounded-2xl flex flex-col h-full reveal group">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-pink-500/20 to-red-500/20 border border-pink-500/20 flex items-center justify-center">
-                            <i data-lucide="heart-pulse" class="text-pink-400 w-5 h-5"></i>
-                        </div>
-                        <i data-lucide="arrow-up-right" class="text-gray-500 group-hover:text-white transition-colors w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-lg font-bold text-white mb-2">Cardiac Life Expectancy</h4>
-                    <p class="text-sm text-gray-400 flex-grow">Random Forest classifier on 2,000+ patient records — 78% accuracy, identifies critical mortality risk factors.</p>
-                    <div class="flex flex-wrap gap-2 mt-5 pt-5 border-t border-white/5">
-                        <span class="text-xs text-gray-400 font-mono">Random Forest</span>
-                        <span class="text-xs text-gray-400 font-mono">Scikit-learn</span>
-                        <span class="text-xs text-gray-400 font-mono">Pandas</span>
-                    </div>
-                </a>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" id="otherProjects">
+                <!-- populated by JS -->
             </div>
         </div>
     </section>
@@ -750,7 +591,6 @@
             </div>
 
             <div class="grid lg:grid-cols-3 gap-5">
-                <!-- AI/ML -->
                 <div class="glass card-glow p-7 rounded-2xl reveal">
                     <div class="flex items-center gap-3 mb-5">
                         <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-violet to-brand-indigo flex items-center justify-center">
@@ -759,22 +599,21 @@
                         <h3 class="font-display text-lg font-bold text-white">AI / Machine Learning</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">GenAI</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Open-source LLMs</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Agentic Systems</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">RAG</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">LangChain</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Hugging Face</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Transformers</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">XGBoost</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Scikit-learn</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">pandas / numpy</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">ComfyUI</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">4-bit Quantization</span>
+                        <span class="skill-chip">GenAI</span>
+                        <span class="skill-chip">Open-source LLMs</span>
+                        <span class="skill-chip">Agentic Systems</span>
+                        <span class="skill-chip">RAG</span>
+                        <span class="skill-chip">LangChain</span>
+                        <span class="skill-chip">Hugging Face</span>
+                        <span class="skill-chip">Transformers</span>
+                        <span class="skill-chip">XGBoost</span>
+                        <span class="skill-chip">Scikit-learn</span>
+                        <span class="skill-chip">pandas / numpy</span>
+                        <span class="skill-chip">ComfyUI</span>
+                        <span class="skill-chip">4-bit Quantization</span>
                     </div>
                 </div>
 
-                <!-- Backend -->
                 <div class="glass card-glow p-7 rounded-2xl reveal">
                     <div class="flex items-center gap-3 mb-5">
                         <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-cyan to-brand-mint flex items-center justify-center">
@@ -782,31 +621,15 @@
                         </div>
                         <h3 class="font-display text-lg font-bold text-white">Backend & Architecture</h3>
                     </div>
-                    <div class="space-y-2.5">
-                        <div class="flex justify-between text-sm border-b border-white/5 pb-2.5">
-                            <span class="text-gray-400">Languages</span>
-                            <span class="font-mono text-gray-300">Python · Java · SQL</span>
-                        </div>
-                        <div class="flex justify-between text-sm border-b border-white/5 pb-2.5">
-                            <span class="text-gray-400">Frameworks</span>
-                            <span class="font-mono text-gray-300">FastAPI · Spring Boot</span>
-                        </div>
-                        <div class="flex justify-between text-sm border-b border-white/5 pb-2.5">
-                            <span class="text-gray-400">Databases</span>
-                            <span class="font-mono text-gray-300">PostgreSQL · MySQL</span>
-                        </div>
-                        <div class="flex justify-between text-sm border-b border-white/5 pb-2.5">
-                            <span class="text-gray-400">APIs</span>
-                            <span class="font-mono text-gray-300">REST · Microservices</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-400">Patterns</span>
-                            <span class="font-mono text-gray-300">MVC · Distributed</span>
-                        </div>
-                    </div>
+                    <dl class="space-y-2.5 text-sm">
+                        <div class="flex justify-between border-b border-white/5 pb-2.5"><dt class="text-gray-400">Languages</dt><dd class="font-mono text-gray-300">Python · Java · SQL</dd></div>
+                        <div class="flex justify-between border-b border-white/5 pb-2.5"><dt class="text-gray-400">Frameworks</dt><dd class="font-mono text-gray-300">FastAPI · Spring Boot</dd></div>
+                        <div class="flex justify-between border-b border-white/5 pb-2.5"><dt class="text-gray-400">Databases</dt><dd class="font-mono text-gray-300">PostgreSQL · MySQL</dd></div>
+                        <div class="flex justify-between border-b border-white/5 pb-2.5"><dt class="text-gray-400">APIs</dt><dd class="font-mono text-gray-300">REST · Microservices</dd></div>
+                        <div class="flex justify-between"><dt class="text-gray-400">Patterns</dt><dd class="font-mono text-gray-300">MVC · Distributed</dd></div>
+                    </dl>
                 </div>
 
-                <!-- DevOps -->
                 <div class="glass card-glow p-7 rounded-2xl reveal">
                     <div class="flex items-center gap-3 mb-5">
                         <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-brand-violet flex items-center justify-center">
@@ -815,15 +638,15 @@
                         <h3 class="font-display text-lg font-bold text-white">MLOps & DevOps</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Docker</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">GitHub Actions</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">CI/CD</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Automated Testing</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Pytest</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Git</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Postman</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Observability</span>
-                        <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">Structured Logging</span>
+                        <span class="skill-chip">Docker</span>
+                        <span class="skill-chip">GitHub Actions</span>
+                        <span class="skill-chip">CI/CD</span>
+                        <span class="skill-chip">Automated Testing</span>
+                        <span class="skill-chip">Pytest</span>
+                        <span class="skill-chip">Git</span>
+                        <span class="skill-chip">Postman</span>
+                        <span class="skill-chip">Observability</span>
+                        <span class="skill-chip">Structured Logging</span>
                     </div>
                 </div>
             </div>
@@ -839,10 +662,8 @@
             </div>
 
             <div class="relative border-l-2 border-white/10 ml-3 md:ml-6 space-y-12">
-
-                <!-- IBM -->
                 <div class="relative pl-8 md:pl-12 reveal">
-                    <div class="absolute w-5 h-5 rounded-full -left-[11px] top-1.5 bg-gradient-to-br from-brand-violet to-brand-cyan ring-4 ring-ink-950"></div>
+                    <span class="absolute w-5 h-5 rounded-full -left-[11px] top-1.5 bg-gradient-to-br from-brand-violet to-brand-cyan ring-4 ring-ink-950"></span>
                     <div class="glass card-glow rounded-2xl p-7">
                         <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-2">
                             <h3 class="font-display text-2xl font-bold text-white">Software Engineer <span class="text-gray-500 font-normal">@ IBM Labs</span></h3>
@@ -862,9 +683,8 @@
                     </div>
                 </div>
 
-                <!-- Nineleaps -->
                 <div class="relative pl-8 md:pl-12 reveal">
-                    <div class="absolute w-5 h-5 rounded-full -left-[11px] top-1.5 bg-white/20 ring-4 ring-ink-950"></div>
+                    <span class="absolute w-5 h-5 rounded-full -left-[11px] top-1.5 bg-white/20 ring-4 ring-ink-950"></span>
                     <div class="glass card-glow rounded-2xl p-7">
                         <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-2">
                             <h3 class="font-display text-2xl font-bold text-white">Software Engineer Intern <span class="text-gray-500 font-normal">@ Nineleaps</span></h3>
@@ -918,8 +738,7 @@
 
             <div class="gradient-border p-8 md:p-10 rounded-3xl reveal">
                 <form action="https://formspree.io/f/xjglawav" method="POST" class="space-y-5">
-                    <!-- Honeypot: bots fill this, humans don't. Formspree silently discards. -->
-                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
+                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
                     <input type="hidden" name="_subject" value="New portfolio inquiry">
                     <div class="grid md:grid-cols-2 gap-5">
                         <div>
@@ -955,62 +774,218 @@
                 </div>
             </div>
             <div class="flex items-center gap-5">
-                <a href="https://www.linkedin.com/in/soumyajyoti-biswas/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i>
-                </a>
-                <a href="https://github.com/Titan-Fury" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
-                    <i data-lucide="github" class="w-5 h-5"></i>
-                </a>
-                <a href="mailto:soumyajyotibiswas758@gmail.com" class="text-gray-400 hover:text-white transition-colors" aria-label="Email">
-                    <i data-lucide="mail" class="w-5 h-5"></i>
-                </a>
+                <a href="https://www.linkedin.com/in/soumyajyoti-biswas/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="https://github.com/Titan-Fury" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="mailto:soumyajyotibiswas758@gmail.com" class="text-gray-400 hover:text-white transition-colors" aria-label="Email"><i data-lucide="mail" class="w-5 h-5"></i></a>
             </div>
-            <p class="text-gray-600 text-xs font-mono">&copy; 2026 · Built with care</p>
+            <p id="footerYear" class="text-gray-600 text-xs font-mono"></p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Lucide icons (deferred) -->
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+
     <script>
-        // Lucide icons
-        lucide.createIcons();
+    (() => {
+        'use strict';
+
+        const RAILWAY_URL = 'https://magicpinchallenge-production.up.railway.app';
+
+        const ENDPOINTS = [
+            { method: 'GET',  path: '/v1/healthz',  desc: 'liveness + context counts', live: true  },
+            { method: 'GET',  path: '/v1/metadata', desc: 'team, model, approach',     live: true  },
+            { method: 'POST', path: '/v1/context',  desc: 'ingest versioned context',  live: false },
+            { method: 'POST', path: '/v1/tick',     desc: 'batch-compose actions',     live: false },
+            { method: 'POST', path: '/v1/reply',    desc: 'send / wait / end decision',live: false },
+            { method: 'POST', path: '/v1/teardown', desc: 'clear in-memory state',     live: false }
+        ];
+
+        const PROJECTS = [
+            {
+                title: 'Cricket Score Predictor',
+                href: 'https://github.com/Titan-Fury',
+                icon: 'activity',
+                iconClass: 'text-brand-cyan',
+                desc: 'XGBoost-driven end-to-end ML app analyzing 1,500+ matches; 82% accuracy with sub-200ms predictions.',
+                tags: ['Python', 'XGBoost', 'Pickle']
+            },
+            {
+                title: 'Athenaeum (E-Learning)',
+                href: 'https://github.com/Titan-Fury',
+                icon: 'award',
+                iconClass: 'text-yellow-400',
+                desc: 'Scalable platform with live classes, forums, and NLP-powered automated grading for descriptive answers.',
+                badge: '🏆 Top 15 Finalist · India 2021 (120+ colleges)',
+                tags: ['Backend', 'NLP', 'ML']
+            },
+            {
+                title: 'Cardiac Life Expectancy',
+                href: 'https://github.com/Titan-Fury',
+                icon: 'heart-pulse',
+                iconClass: 'text-pink-400',
+                desc: 'Random Forest classifier on 2,000+ patient records — 78% accuracy, identifies critical mortality risk factors.',
+                tags: ['Random Forest', 'Scikit-learn', 'Pandas']
+            }
+        ];
+
+        const MARQUEE_ITEMS = [
+            'Python', 'FastAPI', 'LangChain', 'RAG', 'Spring Boot',
+            'PostgreSQL', 'Docker', 'WatsonX', 'Agentic AI', 'Transformers'
+        ];
+
+        const $ = (id) => document.getElementById(id);
+        const escapeHTML = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+        // Marquee
+        const buildMarquee = () => {
+            const track = $('marqueeTrack');
+            if (!track) return;
+            const buildRun = () => {
+                const span = document.createElement('span');
+                span.className = 'flex items-center gap-12';
+                span.innerHTML = MARQUEE_ITEMS
+                    .map(t => `<span>${escapeHTML(t)}</span><span class="text-brand-violet">&bull;</span>`)
+                    .join('');
+                return span;
+            };
+            track.appendChild(buildRun());
+            track.appendChild(buildRun());
+        };
+
+        // Endpoints
+        const buildEndpoints = () => {
+            const root = $('endpoints');
+            if (!root) return;
+            root.innerHTML = ENDPOINTS.map(e => {
+                const badge = e.method === 'GET' ? 'method-get' : 'method-post';
+                const inner = `
+                    <div class="flex items-center gap-3 min-w-0">
+                        <span class="method-badge ${badge}">${e.method}</span>
+                        <code class="text-sm font-mono text-white">${e.path}</code>
+                        <span class="text-xs text-gray-500 hidden lg:inline truncate">— ${escapeHTML(e.desc)}</span>
+                    </div>`;
+                if (e.live) {
+                    return `<a href="${RAILWAY_URL}${e.path}" target="_blank" rel="noopener noreferrer" class="glass card-glow p-4 rounded-xl flex items-center justify-between group">
+                        ${inner}
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-500 group-hover:text-white transition-colors flex-shrink-0"></i>
+                    </a>`;
+                }
+                return `<div class="glass p-4 rounded-xl flex items-center">${inner}</div>`;
+            }).join('');
+        };
+
+        // Project cards
+        const buildProjects = () => {
+            const root = $('otherProjects');
+            if (!root) return;
+            root.innerHTML = PROJECTS.map(p => `
+                <a href="${p.href}" target="_blank" rel="noopener noreferrer" class="glass card-glow p-6 rounded-2xl flex flex-col h-full reveal group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-violet/20 to-brand-cyan/20 border border-white/10 flex items-center justify-center">
+                            <i data-lucide="${p.icon}" class="${p.iconClass} w-5 h-5"></i>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="text-gray-500 group-hover:text-white transition-colors w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">${escapeHTML(p.title)}</h4>
+                    <p class="text-sm text-gray-400 flex-grow">${escapeHTML(p.desc)}</p>
+                    ${p.badge ? `<p class="text-xs text-yellow-400 font-semibold mt-3">${p.badge}</p>` : ''}
+                    <div class="flex flex-wrap gap-2 mt-5 pt-5 border-t border-white/5">
+                        ${p.tags.map(t => `<span class="text-xs text-gray-400 font-mono">${escapeHTML(t)}</span>`).join('')}
+                    </div>
+                </a>
+            `).join('');
+        };
 
         // Mobile menu
-        const menuBtn = document.getElementById('mobileMenuBtn');
-        const menu = document.getElementById('mobileMenu');
-        menuBtn?.addEventListener('click', () => menu.classList.toggle('hidden'));
-        menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+        const wireMobileMenu = () => {
+            const btn = $('mobileMenuBtn');
+            const menu = $('mobileMenu');
+            if (!btn || !menu) return;
+            const toggle = () => {
+                const open = !menu.classList.toggle('hidden');
+                btn.setAttribute('aria-expanded', String(open));
+            };
+            btn.addEventListener('click', toggle);
+            menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            }));
+        };
 
-        // Cursor spotlight
-        const spotlight = document.querySelector('.spotlight');
-        window.addEventListener('mousemove', (e) => {
-            spotlight.style.setProperty('--mx', e.clientX + 'px');
-            spotlight.style.setProperty('--my', e.clientY + 'px');
-        }, { passive: true });
+        // Cursor spotlight (skip on touch devices)
+        const wireSpotlight = () => {
+            if (window.matchMedia('(pointer: coarse)').matches) return;
+            const el = document.querySelector('.spotlight');
+            if (!el) return;
+            window.addEventListener('mousemove', (e) => {
+                el.style.setProperty('--mx', e.clientX + 'px');
+                el.style.setProperty('--my', e.clientY + 'px');
+            }, { passive: true });
+        };
 
         // Reveal on scroll
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(en => {
-                if (en.isIntersecting) {
-                    en.target.classList.add('in');
-                    io.unobserve(en.target);
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-        // Copy curl snippet
-        const copyBtn = document.getElementById('copyCurl');
-        const copyLabel = document.getElementById('copyLabel');
-        const curlEl = document.getElementById('curlSnippet');
-        copyBtn?.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(curlEl.innerText.trim());
-                copyLabel.textContent = 'copied!';
-                setTimeout(() => { copyLabel.textContent = 'copy'; }, 1600);
-            } catch (e) {
-                copyLabel.textContent = 'failed';
+        const wireReveal = () => {
+            const els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(el => el.classList.add('in'));
+                return;
             }
-        });
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(en => {
+                    if (en.isIntersecting) {
+                        en.target.classList.add('in');
+                        io.unobserve(en.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(el => io.observe(el));
+        };
+
+        // Copy curl
+        const wireCopy = () => {
+            const btn = $('copyCurl');
+            const label = $('copyLabel');
+            const snippet = $('curlSnippet');
+            if (!btn || !label || !snippet) return;
+            btn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(snippet.innerText.trim());
+                    label.textContent = 'copied!';
+                } catch {
+                    label.textContent = 'failed';
+                }
+                setTimeout(() => { label.textContent = 'copy'; }, 1600);
+            });
+        };
+
+        // Footer year
+        const wireFooterYear = () => {
+            const el = $('footerYear');
+            if (el) el.textContent = `© ${new Date().getFullYear()} · Built with care`;
+        };
+
+        // Render dynamic sections, then trigger Lucide icons + observers
+        const init = () => {
+            buildMarquee();
+            buildEndpoints();
+            buildProjects();
+            wireMobileMenu();
+            wireSpotlight();
+            wireReveal();
+            wireCopy();
+            wireFooterYear();
+            // Lucide loads with defer; ensure icons render after dynamic content is in DOM
+            const renderIcons = () => window.lucide?.createIcons();
+            if (window.lucide) renderIcons();
+            else window.addEventListener('load', renderIcons, { once: true });
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init, { once: true });
+        } else {
+            init();
+        }
+    })();
     </script>
 </body>
 </html>
