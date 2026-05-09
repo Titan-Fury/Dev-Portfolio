@@ -195,17 +195,26 @@
             box-shadow: 0 14px 40px -10px rgba(6,182,212,0.55);
         }
 
-        .cycler { display: inline-flex; height: 1.1em; overflow: hidden; vertical-align: bottom; }
+        .cycler {
+            display: inline-block;
+            height: 1.1em;
+            overflow: hidden;
+            vertical-align: top;
+        }
         .cycler-track {
-            display: flex;
-            flex-direction: column;
-            animation: cycle 9s infinite;
+            display: block;
+            animation: cycle 9s ease-in-out infinite;
+        }
+        .cycler-track > span {
+            display: block;
+            height: 1.1em;
+            line-height: 1.1em;
         }
         @keyframes cycle {
             0%, 28%   { transform: translateY(0); }
-            33%, 61%  { transform: translateY(-100%); }
-            66%, 94%  { transform: translateY(-200%); }
-            100%      { transform: translateY(-300%); }
+            33%, 61%  { transform: translateY(-1.1em); }
+            66%, 94%  { transform: translateY(-2.2em); }
+            100%      { transform: translateY(-3.3em); }
         }
 
         .pulse-dot {
