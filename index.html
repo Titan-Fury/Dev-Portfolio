@@ -158,6 +158,13 @@
             animation: scroll 35s linear infinite;
             width: max-content;
         }
+        .marquee-run {
+            display: inline-flex;
+            align-items: center;
+            gap: 3rem;
+            flex-shrink: 0;
+        }
+        .marquee-dot { color: #7c3aed; }
         @keyframes scroll {
             from { transform: translateX(0); }
             to   { transform: translateX(-50%); }
@@ -276,12 +283,14 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            .reveal { opacity: 1; transform: none; }
+            /* Disable scroll-reveal and decorative motion only — keep
+               content carriers (cycler, marquee) running so users still
+               see all the words/skills the page is trying to communicate. */
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .card-glow:hover { transform: none !important; }
+            .btn-gradient:hover { transform: none !important; }
+            .aurora::before, .aurora::after { animation: none !important; }
+            .gradient-border::before { animation: none !important; }
         }
     </style>
 </head>
@@ -410,8 +419,31 @@
     <!-- MARQUEE -->
     <section class="py-8 border-y border-white/5 bg-ink-900/50" aria-hidden="true">
         <div class="marquee-mask overflow-hidden">
-            <div class="marquee text-2xl md:text-3xl font-display font-semibold text-gray-500/70" id="marqueeTrack">
-                <!-- populated by JS to avoid markup duplication -->
+            <div class="marquee text-2xl md:text-3xl font-display font-semibold text-gray-500/70">
+                <span class="marquee-run">
+                    <span>Python</span><span class="marquee-dot">&bull;</span>
+                    <span>FastAPI</span><span class="marquee-dot">&bull;</span>
+                    <span>LangChain</span><span class="marquee-dot">&bull;</span>
+                    <span>RAG</span><span class="marquee-dot">&bull;</span>
+                    <span>Spring Boot</span><span class="marquee-dot">&bull;</span>
+                    <span>PostgreSQL</span><span class="marquee-dot">&bull;</span>
+                    <span>Docker</span><span class="marquee-dot">&bull;</span>
+                    <span>WatsonX</span><span class="marquee-dot">&bull;</span>
+                    <span>Agentic AI</span><span class="marquee-dot">&bull;</span>
+                    <span>Transformers</span><span class="marquee-dot">&bull;</span>
+                </span>
+                <span class="marquee-run" aria-hidden="true">
+                    <span>Python</span><span class="marquee-dot">&bull;</span>
+                    <span>FastAPI</span><span class="marquee-dot">&bull;</span>
+                    <span>LangChain</span><span class="marquee-dot">&bull;</span>
+                    <span>RAG</span><span class="marquee-dot">&bull;</span>
+                    <span>Spring Boot</span><span class="marquee-dot">&bull;</span>
+                    <span>PostgreSQL</span><span class="marquee-dot">&bull;</span>
+                    <span>Docker</span><span class="marquee-dot">&bull;</span>
+                    <span>WatsonX</span><span class="marquee-dot">&bull;</span>
+                    <span>Agentic AI</span><span class="marquee-dot">&bull;</span>
+                    <span>Transformers</span><span class="marquee-dot">&bull;</span>
+                </span>
             </div>
         </div>
     </section>
@@ -847,29 +879,8 @@
             }
         ];
 
-        const MARQUEE_ITEMS = [
-            'Python', 'FastAPI', 'LangChain', 'RAG', 'Spring Boot',
-            'PostgreSQL', 'Docker', 'WatsonX', 'Agentic AI', 'Transformers'
-        ];
-
         const $ = (id) => document.getElementById(id);
         const escapeHTML = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-        // Marquee
-        const buildMarquee = () => {
-            const track = $('marqueeTrack');
-            if (!track) return;
-            const buildRun = () => {
-                const span = document.createElement('span');
-                span.className = 'flex items-center gap-12';
-                span.innerHTML = MARQUEE_ITEMS
-                    .map(t => `<span>${escapeHTML(t)}</span><span class="text-brand-violet">&bull;</span>`)
-                    .join('');
-                return span;
-            };
-            track.appendChild(buildRun());
-            track.appendChild(buildRun());
-        };
 
         // Endpoints
         const buildEndpoints = () => {
@@ -985,7 +996,6 @@
 
         // Render dynamic sections, then trigger Lucide icons + observers
         const init = () => {
-            buildMarquee();
             buildEndpoints();
             buildProjects();
             wireMobileMenu();
