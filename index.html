@@ -422,42 +422,44 @@
                 <div class="grid lg:grid-cols-12 gap-8 items-start">
                     <div class="lg:col-span-7">
                         <span class="kicker mb-4"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Featured · In Progress</span>
-                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-4 mb-4">CogniStream AI <span class="text-gray-500 font-normal">— Cinematic Visual Generation Engine</span></h3>
-                        <p class="text-gray-400 leading-relaxed mb-6">A fully Dockerized, GPU-accelerated agentic pipeline for automated visual storytelling. Parses narrative scripts into scene graphs, drives multi-model T2I/T2V generation, and composes cinematic output programmatically.</p>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-4 mb-4">CogniStream AI <span class="text-gray-500 font-normal">— Self-Learning Faceless Video Engine</span></h3>
+                        <p class="text-gray-400 leading-relaxed mb-6">A 100% local, three-service FastAPI stack (Gateway · OmniCast · OmniEdit) that generates and enhances short-form videos on a single RTX 4070 Super (12 GB VRAM). LangGraph pipelines drive Wan 2.2 5B fp16 (primary) with LTX 2B (fallback) via ComfyUI; a ChromaDB-backed Brain logs every outcome and auto-downgrades parameters on OOM.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Python</span>
-                            <span class="tag-pill">FastAPI</span>
-                            <span class="tag-pill">SDXL · Wan</span>
-                            <span class="tag-pill">4-bit Quant</span>
-                            <span class="tag-pill">Docker · GPU</span>
+                            <span class="tag-pill">FastAPI · Microservices</span>
+                            <span class="tag-pill">LangGraph</span>
                             <span class="tag-pill">ComfyUI</span>
+                            <span class="tag-pill">Wan 2.2 · LTX</span>
+                            <span class="tag-pill">Redis</span>
+                            <span class="tag-pill">ChromaDB</span>
+                            <span class="tag-pill">RTX 4070 Super</span>
+                            <span class="tag-pill">Streamlit · SSE</span>
                         </div>
                     </div>
                     <div class="lg:col-span-5 grid gap-3">
                         <div class="glass p-5 rounded-xl card-glow">
                             <div class="flex items-start gap-3">
-                                <i data-lucide="brain-circuit" class="w-5 h-5 text-brand-violet mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="network" class="w-5 h-5 text-brand-violet mt-0.5 flex-shrink-0"></i>
                                 <div>
-                                    <p class="text-sm font-semibold text-white">Semantic Intelligence</p>
-                                    <p class="text-xs text-gray-400 mt-1">Parses scripts into scene graphs &mdash; environment, emotion, lighting, visual keywords.</p>
+                                    <p class="text-sm font-semibold text-white">Three-Service Architecture</p>
+                                    <p class="text-xs text-gray-400 mt-1">Gateway (reverse-proxy + SSE relay), OmniCast (generation), OmniEdit (ESRGAN / RIFE / CodeFormer) &mdash; restartable independently.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="glass p-5 rounded-xl card-glow">
                             <div class="flex items-start gap-3">
-                                <i data-lucide="image" class="w-5 h-5 text-brand-cyan mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="brain-circuit" class="w-5 h-5 text-brand-cyan mt-0.5 flex-shrink-0"></i>
                                 <div>
-                                    <p class="text-sm font-semibold text-white">Generative Vision</p>
-                                    <p class="text-xs text-gray-400 mt-1">Multi-model SDXL + Wan T2V with seed-controlled stability.</p>
+                                    <p class="text-sm font-semibold text-white">Self-Learning Brain</p>
+                                    <p class="text-xs text-gray-400 mt-1">ChromaDB-backed outcome ledger; deterministic OOM auto-downgrade + semantic lesson lookup synthesized via OpenRouter embeddings.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="glass p-5 rounded-xl card-glow">
                             <div class="flex items-start gap-3">
-                                <i data-lucide="clapperboard" class="w-5 h-5 text-pink-400 mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="cpu" class="w-5 h-5 text-pink-400 mt-0.5 flex-shrink-0"></i>
                                 <div>
-                                    <p class="text-sm font-semibold text-white">Algorithmic Direction</p>
-                                    <p class="text-xs text-gray-400 mt-1">Color correction, opacity blending, fade transitions &mdash; programmatic.</p>
+                                    <p class="text-sm font-semibold text-white">GPU-Aware Scheduling</p>
+                                    <p class="text-xs text-gray-400 mt-1">Distributed Redis GPU lock, VRAM preflight, residency planning (KEEP / SOFT / HARD), and slot-based pipeline parallelism.</p>
                                 </div>
                             </div>
                         </div>
