@@ -294,6 +294,185 @@
             .aurora::before, .aurora::after { animation: none !important; }
             .gradient-border::before { animation: none !important; }
         }
+
+        /* ── Detail drawer ────────────────────────────────────────────── */
+        .detail-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: flex-end;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .detail-overlay.open { visibility: visible; opacity: 1; }
+
+        .detail-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 5, 10, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .detail-panel {
+            position: relative;
+            width: 100%;
+            max-width: 760px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: -40px 0 80px -20px rgba(0, 0, 0, 0.7);
+            transform: translateX(100%);
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+        .detail-overlay.open .detail-panel { transform: translateX(0); }
+
+        .detail-panel::-webkit-scrollbar { width: 6px; }
+        .detail-panel::-webkit-scrollbar-thumb {
+            background: rgba(124, 58, 237, 0.5);
+            border-radius: 6px;
+        }
+
+        .detail-close {
+            position: sticky;
+            top: 1rem;
+            float: right;
+            margin: 1rem 1.25rem 0 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 2;
+        }
+        .detail-close:hover { background: rgba(255, 255, 255, 0.12); transform: rotate(90deg); }
+
+        .detail-content {
+            padding: 1.75rem 2rem 3rem;
+        }
+        @media (min-width: 768px) {
+            .detail-content { padding: 2.5rem 3rem 4rem; }
+        }
+        .detail-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+        .detail-content .detail-sub {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 1.75rem;
+        }
+        .detail-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 2rem 0 0.6rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .detail-content h3:first-of-type { padding-top: 0; border-top: 0; margin-top: 0.5rem; }
+        .detail-content h3 .detail-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #c4b5fd;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 9999px;
+            padding: 0.15rem 0.55rem;
+        }
+        .detail-content p {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: #cbd5e1;
+            margin-bottom: 0.85rem;
+        }
+        .detail-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.4rem 0 0.4rem;
+        }
+        .detail-content ul li {
+            position: relative;
+            padding-left: 1.1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 0.45rem;
+        }
+        .detail-content ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #06b6d4;
+        }
+        .detail-content code,
+        .detail-content .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            color: #c4b5fd;
+            background: rgba(124, 58, 237, 0.08);
+            padding: 0.1rem 0.35rem;
+            border-radius: 0.25rem;
+        }
+        .detail-content strong { color: #fff; font-weight: 600; }
+        .detail-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.55rem 1rem;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .detail-cta:hover { background: rgba(255, 255, 255, 0.1); }
+
+        body.modal-open { overflow: hidden; }
+
+        /* "View details" affordance on flagship cards */
+        .view-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e5e7eb;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+        .view-details:hover {
+            background: rgba(124, 58, 237, 0.15);
+            border-color: rgba(124, 58, 237, 0.4);
+            transform: translateX(2px);
+        }
+        .view-details i { transition: transform 0.2s; }
+        .view-details:hover i { transform: translateX(2px); }
     </style>
 </head>
 <body class="bg-ink-950 text-gray-300 font-sans antialiased selection:bg-brand-violet selection:text-white overflow-x-hidden">
@@ -476,6 +655,9 @@
                             <span class="tag-pill">Streamlit · SSE</span>
                             <span class="tag-pill">OpenTelemetry · pynvml</span>
                         </div>
+                        <button type="button" class="view-details" data-project="cognistream" aria-label="Open CogniStream AI deep-dive">
+                            View deep-dive <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
                     </div>
                     <div class="lg:col-span-6 grid gap-3">
                         <div class="glass p-5 rounded-xl card-glow">
@@ -540,6 +722,9 @@
                                 <i data-lucide="terminal" class="w-4 h-4 mr-2"></i> Try the API
                             </a>
                         </div>
+                        <button type="button" class="view-details" data-project="vera" aria-label="Open Vera Engagement Bot deep-dive">
+                            View deep-dive <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
                     </div>
                     <div class="lg:col-span-6 grid grid-cols-2 gap-3">
                         <div class="glass p-5 rounded-xl card-glow col-span-2">
@@ -632,8 +817,8 @@
                     <div class="lg:col-span-6">
                         <span class="kicker mb-4"><i data-lucide="line-chart" class="w-3.5 h-3.5"></i> Featured · Production-Ready</span>
                         <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-4 mb-4">Omni_Stocks <span class="text-gray-500 font-normal">— Multi-Asset Market Prediction System</span></h3>
-                        <p class="text-gray-400 leading-relaxed mb-5">A regime-aware, multi-LLM market prediction stack for <span class="text-white">NSE, US equities, crypto, and FX</span>. Combines technical, fundamental, sentiment, and macro signals through a 4-pillar rubric layered on top of <span class="text-white">isotonic-calibrated XGBoost</span> classifiers, gated by a 4-state HMM regime engine. Runs locally on RTX 4070 Super with Google Drive cold storage and <span class="text-white">Snowflake Cortex</span> for heavy LLM synthesis on demand.</p>
-                        <p class="text-xs text-gray-500 font-mono mb-6">64 instruments · 16+ ingest sources · 130+ Python modules · 9-tab Streamlit dashboard</p>
+                        <p class="text-gray-400 leading-relaxed mb-5">A regime-aware, multi-LLM market prediction stack focused on <span class="text-white">US equities</span> with extended coverage across NSE, crypto, and FX. Combines technical, fundamental, sentiment, and macro signals through a 4-pillar rubric layered on top of <span class="text-white">isotonic-calibrated XGBoost</span> classifiers, gated by a 4-state HMM regime engine. Runs locally on RTX 4070 Super with Google Drive cold storage and <span class="text-white">Snowflake Cortex</span> for heavy LLM synthesis on demand.</p>
+                        <p class="text-xs text-gray-500 font-mono mb-6">30 US equities · 64 total instruments · 16+ ingest sources · 9-tab Streamlit dashboard</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="tag-pill">XGBoost · Isotonic Calibration</span>
                             <span class="tag-pill">HMM Regime Engine</span>
@@ -644,6 +829,9 @@
                             <span class="tag-pill">Streamlit</span>
                             <span class="tag-pill">Parquet · rclone</span>
                         </div>
+                        <button type="button" class="view-details" data-project="omnistocks" aria-label="Open Omni_Stocks deep-dive">
+                            View deep-dive <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
                     </div>
                     <div class="lg:col-span-6 grid grid-cols-2 gap-3">
                         <div class="glass p-5 rounded-xl card-glow col-span-2">
@@ -654,7 +842,7 @@
                         <div class="glass p-4 rounded-xl card-glow">
                             <i data-lucide="activity" class="w-5 h-5 text-brand-cyan mb-2"></i>
                             <p class="font-display text-2xl font-bold text-white">64 <span class="text-sm text-gray-400 font-normal">instruments</span></p>
-                            <p class="text-xs text-gray-500 mt-1">20 NSE · 30 US · 10 crypto · 4 FX</p>
+                            <p class="text-xs text-gray-500 mt-1">30 US · 20 NSE · 10 crypto · 4 FX</p>
                         </div>
                         <div class="glass p-4 rounded-xl card-glow">
                             <i data-lucide="layers" class="w-5 h-5 text-brand-violet mb-2"></i>
@@ -897,6 +1085,17 @@
         </div>
     </footer>
 
+    <!-- Detail drawer (project deep-dive) -->
+    <div id="detailOverlay" class="detail-overlay" role="dialog" aria-modal="true" aria-labelledby="detailTitle" aria-hidden="true">
+        <div class="detail-backdrop" data-close></div>
+        <div class="detail-panel" role="document">
+            <button type="button" class="detail-close" data-close aria-label="Close deep-dive">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="detail-content" id="detailContent"></div>
+        </div>
+    </div>
+
     <!-- Lucide icons (deferred) -->
     <script defer src="https://unpkg.com/lucide@latest"></script>
 
@@ -1058,6 +1257,96 @@
             if (el) el.textContent = `© ${new Date().getFullYear()} · Built with care`;
         };
 
+        // ─── Project deep-dive drawer ─────────────────────────────────────
+        const PROJECT_DETAILS = {
+            cognistream: {
+                title: 'CogniStream AI',
+                subtitle: 'Faceless YouTube Automation Stack — local, RTX-class, self-learning',
+                sections: [
+                    { num: '01', heading: 'The brief', body: '<p>End-to-end automation for short-form YouTube content with <strong>zero cloud dependency</strong>. Generate, enhance, and govern videos on a single RTX 4070 Super (12 GB VRAM) so the cost of a thousand videos approaches the cost of electricity.</p>' },
+                    { num: '02', heading: 'Three-service architecture', body: '<p>Decomposed into three independently-deployable FastAPI services behind a single gateway:</p><ul><li><strong>Gateway</strong> (<code>:8000</code>) — reverse-proxy + Server-Sent Events relay; the only door the UI talks to.</li><li><strong>OmniCast</strong> (<code>:8100</code>) — generation pipeline as a LangGraph DAG.</li><li><strong>OmniEdit</strong> (<code>:8200</code>) — enhancement pipeline (ingest → analyze → plan → enhance → render → review).</li></ul><p>All three coordinate through a shared <strong>Redis</strong> job registry and a shared <strong>ChromaDB</strong> Brain so the generation and enhancement halves can learn from each other without coupling.</p>' },
+                    { num: '03', heading: 'Render chain', body: '<p>LangGraph orchestrates a full diffusion-and-edit chain through a vendored ComfyUI fork:</p><ul><li><strong>Wan 2.2 5B fp16</strong> primary, <strong>LTX 2B</strong> fallback for text-to-video.</li><li><strong>Wav2Lip</strong> for lip-sync, locally-served TTS for voice.</li><li><strong>ESRGAN</strong> upscale → <strong>RIFE</strong> frame interpolation → <strong>CodeFormer</strong> face restoration → <strong>NVENC</strong> encode.</li></ul>' },
+                    { num: '04', heading: 'Self-learning Brain', body: '<p>The Brain is a ChromaDB instance with three collections: <code>trends</code>, <code>job_outcomes</code>, <code>error_lessons</code>. Every run logs its outcome (service, params, success, error type, duration). Future runs apply two rules:</p><ul><li><strong>Deterministic:</strong> if 3+ OOMs occurred at the same resolution, auto-downgrade (e.g. 1280×720 → 960×540, profile → <code>fast</code>).</li><li><strong>Semantic:</strong> the synthesized <code>error_lessons</code> collection is queried with current context; matching trigger substrings inject <code>params_json</code> overrides.</li></ul><p>Lessons are synthesized from recent outcomes via <strong>OpenRouter</strong> embeddings and an LLM rewrite step.</p>' },
+                    { num: '05', heading: 'GPU-aware scheduling', body: '<p>One 12 GB GPU + multiple competing pipelines forced a serious resource layer:</p><ul><li>Distributed <strong>Redis</strong> GPU lock with TTL.</li><li><strong>pynvml</strong> VRAM preflight + temperature throttle + dynamic RAM cap (<code>hardware_guard.py</code>).</li><li><strong>KEEP / SOFT / HARD</strong> model residency planner — keeps ComfyUI weights resident across scenes when the profile is unchanged.</li><li>Slot semaphores (<code>SAMPLE</code> / <code>DECODE_SAVE</code> / <code>POSTPROCESS</code>) enable safe pipeline parallelism.</li><li><code>@downgrade_on_oom</code> retry decorator force-evicts the residency cache and retries with the next-cheaper profile.</li><li>OpenTelemetry tracer spans per scene (stdout default, OTLP opt-in).</li></ul>' },
+                    { num: '06', heading: 'F01–F15 decision layer', body: '<p>15 feature modules layered on top of the generation core: performance-feedback loop, shorts generator, multi-platform fanout, safety filters, captions, thumbnail A/B ranker, competitor analysis, uniqueness/dedup, voice fingerprint, audio mix, mutated-retry, cost ledger, adaptive planner, chapters/SEO, fact-check.</p>' },
+                    { num: '07', heading: 'Why this is hard', body: '<p>You only see "it generated a video" — what makes it interesting is keeping a single GPU productive while letting independent services coordinate without stepping on each other and recovering automatically when models OOM. Most "AI video" demos cheat by renting cloud GPUs; this one runs on hardware you already own.</p>' }
+                ]
+            },
+            vera: {
+                title: 'Vera Engagement Bot',
+                subtitle: 'magicpin AI Challenge — compliance-grade WhatsApp LLM service',
+                sections: [
+                    { num: '01', heading: 'The brief', body: '<p>magicpin has ~1M merchants. A human field rep can talk to maybe 50 a day. Build a bot that acts like a senior magicpin partner — warm, concise, data-grounded WhatsApp nudges — while honoring strict compliance (≤320 chars, no URLs, no spam, opt-out support). Judged by replaying a captured trace against a live instance.</p>' },
+                    { num: '02', heading: 'Stateless service over a 6-endpoint contract', body: '<p>FastAPI + Pydantic v2, single Uvicorn worker, all in-memory:</p><ul><li><code>GET /v1/healthz</code> · liveness + context counts</li><li><code>GET /v1/metadata</code> · team / model / approach</li><li><code>POST /v1/context</code> · ingest a versioned context (200 / 400 / 409)</li><li><code>POST /v1/tick</code> · produce up to 20 proactive actions</li><li><code>POST /v1/reply</code> · send / wait / end decision tree</li><li><code>POST /v1/teardown</code> · clear all in-memory state</li></ul>' },
+                    { num: '03', heading: 'How /v1/tick got 540× faster', body: '<p>Naive implementation: <code>~54s</code> on the 25-trigger dataset. Two changes brought it to <strong>&lt;100ms</strong>:</p><ul><li><strong>Precompute-on-ingest</strong> — when <code>/v1/context</code> accepts a trigger whose merchant is already loaded, fire <code>asyncio.create_task(compose_and_cache(trigger_id))</code>. The compose runs during the 5-minute inter-tick window; <code>/v1/tick</code> simply awaits the ready future.</li><li><strong>Deterministic template bypass</strong> — 7 trigger kinds (recall / refill / appointment / spike / dip / festival / milestone) skip the LLM entirely and compose through f-string builders. ~41% of dataset triggers incur zero LLM latency, zero hallucination risk, zero rate-limit exposure.</li></ul>' },
+                    { num: '04', heading: 'Circuit-broken multi-provider LLM chain', body: '<p>7 providers behind a uniform <code>LLMProvider</code> protocol: <strong>Groq → Gemini → OpenRouter (Gemma) → OpenRouter (gpt-oss-20b)</strong>, with Together, Perplexity, and Ollama as drop-ins. <code>Retry-After</code>-aware circuit breaker skips cold tiers without making a network call, and a 2-attempt exponential-backoff decorator catches transient 5xx without retrying 4xx.</p>' },
+                    { num: '05', heading: '4-context RAG bundle + per-kind prompt library', body: '<p><code>ContextAggregator</code> joins category × merchant × customer × trigger into a single <code>ContextBundle</code> rendered to markdown for the prompt. Each of 22 trigger kinds carries a 9/10-quality few-shot example that pushes the LLM toward fact-first openers, loss-aversion framing, and single-binary CTAs. Specificity wins on the rubric — judges test each kind separately.</p>' },
+                    { num: '06', heading: 'Compliance belt (post-LLM validators)', body: '<p>Defense-in-depth instead of trusting the LLM:</p><ul><li>URL stripping (regex, in-place).</li><li>Length cap at 320 chars, sentence-truncated rather than rejected.</li><li>Verbatim-repeat suppression against the prior outbound for that conversation.</li><li>Auto-reply detection (out-of-office patterns) — short-circuits to <code>action=end</code>.</li><li>Hard-no detection across English, Hindi, and Devanagari script (no <code>\\b</code> — Python word boundaries don\'t match Devanagari reliably).</li></ul>' },
+                    { num: '07', heading: 'Live + observable', body: '<p>Deployed on <strong>Railway</strong>. <code>/v1/metrics</code> JSON endpoint plus a self-contained <code>/dashboard</code> HTML page expose compose paths, provider mix, fallback cascade, 429 windows, p50/p95 latency, and a ring of the last 20 composes. 33 contract-level pytest cases run green in ~0.3s.</p><a class="detail-cta" href="https://magicpinchallenge-production.up.railway.app/v1/healthz" target="_blank" rel="noopener noreferrer"><i data-lucide="external-link" class="w-4 h-4"></i> Hit the live /v1/healthz</a>' }
+                ]
+            },
+            omnistocks: {
+                title: 'Omni_Stocks',
+                subtitle: 'Multi-asset market prediction — US equities first, regime-aware, multi-LLM',
+                sections: [
+                    { num: '01', heading: 'What it does', body: '<p>Predicts 5-day directional moves for <strong>30 US large caps</strong> (the focus universe), plus <strong>20 NSE</strong> tickers, <strong>10 crypto</strong>, and <strong>4 FX</strong> pairs. Output is a conviction-gated signal — no signal is always better than a weak one.</p>' },
+                    { num: '02', heading: 'The modeling stack', body: '<ul><li><strong>Isotonic-calibrated XGBoost</strong> 5-day classifier per regime (so probabilities are honest enough for sizing).</li><li><strong>NHITS</strong> deep specialists for harder slices.</li><li><strong>Conformal</strong> prediction intervals on top, not raw point forecasts.</li><li><strong>Meta-labeling</strong> filters which base predictions are worth acting on.</li><li><strong>Drift gate</strong> kills the signal when feature distributions shift past a PSI threshold.</li><li><strong>Kelly fraction</strong> sizing, capped, on the gated set.</li><li>Trained inside a <strong>purged k-fold</strong> CV harness with explicit leakage checks.</li></ul>' },
+                    { num: '03', heading: '4-state HMM regime engine', body: '<p>The same XGBoost output behaves differently in different markets. A 4-state Hidden Markov Model labels each day as <strong>Bull / Bear / Chop / Crisis</strong>. The 4-pillar rubric (technical, fundamental, sentiment, macro) is weighted by the live regime, and the conviction gate threshold is tightened in <code>Crisis</code>.</p>' },
+                    { num: '04', heading: 'Ingest layer (US-led)', body: '<p>16+ sources, with the US-equity feeds doing the heavy lifting:</p><ul><li><strong>Polygon</strong> · OHLCV + intraday for US equities and FX.</li><li><strong>EDGAR</strong> · SEC filings → fundamentals.</li><li><strong>FRED</strong> · macro reference series (rates, CPI, unemployment, etc.).</li><li><strong>NewsAPI</strong>, <strong>Marketaux</strong>, <strong>GDELT</strong> · global news coverage.</li><li><strong>Reddit</strong>, <strong>StockTwits</strong> · retail sentiment.</li><li><strong>NSE bhavcopy / NSE OI / SEBI insider</strong> · India coverage.</li></ul>' },
+                    { num: '05', heading: 'Multi-LLM router for narrative', body: '<p>The numerical layer makes the call; the LLM layer explains it. Six backends behind one router with diskcache + per-backend rate limiting:</p><ul><li><strong>FinBERT</strong> for sentiment scoring (free, fast).</li><li><strong>Ollama</strong> for local synthesis.</li><li><strong>OpenRouter</strong> · free-tier models for breadth.</li><li><strong>Snowflake Cortex</strong> · paid tier for heavy synthesis when quality matters.</li><li><strong>Gemini</strong>, <strong>Groq</strong> · alternates with their own quotas.</li></ul><p>Routes are configured in <code>llm_routes.yaml</code> — primary → fallback chains with per-route caching keys.</p>' },
+                    { num: '06', heading: 'Storage + dashboard', body: '<p>Tier-aware Parquet I/O: hot/processed lives on local SSD, cold/raw lives on Google Drive mounted via <strong>rclone</strong> at <code>Z:\\Omni_Stocks\\</code>. The split is invisible to callers — everything routes through <code>omni.storage.tiers</code> with a graceful local fallback. The 9-tab Streamlit dashboard renders predictions, regime overlays, watchlists, and LLM-generated explanations.</p>' },
+                    { num: '07', heading: 'Realistic accuracy', body: '<p>This is research code, not hindsight bias dressed up as alpha:</p><ul><li>Overall directional accuracy: <strong>54–60%</strong>.</li><li>Top-decile gated signals: <strong>65–72%</strong>.</li><li>Calibration Brier score: <strong>≤ 0.22</strong>.</li></ul><p class="text-xs text-gray-500 italic" style="margin-top:1rem">Personal research project. Not investment advice.</p>' }
+                ]
+            }
+        };
+
+        const wireDetailDrawer = () => {
+            const overlay = $('detailOverlay');
+            const content = $('detailContent');
+            if (!overlay || !content) return;
+            let lastFocus = null;
+
+            const open = (key) => {
+                const data = PROJECT_DETAILS[key];
+                if (!data) return;
+                const sectionsHtml = data.sections.map(s => `
+                    <h3><span class="detail-num">${s.num}</span>${escapeHTML(s.heading)}</h3>
+                    ${s.body}
+                `).join('');
+                content.innerHTML = `
+                    <h2 id="detailTitle">${escapeHTML(data.title)}</h2>
+                    <p class="detail-sub">${escapeHTML(data.subtitle)}</p>
+                    ${sectionsHtml}
+                `;
+                lastFocus = document.activeElement;
+                overlay.classList.add('open');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+                content.scrollTop = 0;
+                window.lucide?.createIcons();
+                // Focus the close button after the slide-in animation begins
+                setTimeout(() => overlay.querySelector('.detail-close')?.focus(), 80);
+            };
+
+            const close = () => {
+                overlay.classList.remove('open');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('modal-open');
+                if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+            };
+
+            // Buttons that open the drawer
+            document.querySelectorAll('[data-project]').forEach(btn => {
+                btn.addEventListener('click', () => open(btn.getAttribute('data-project')));
+            });
+
+            // Backdrop / X / ESC close
+            overlay.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+            });
+        };
+
         // Render dynamic sections, then trigger Lucide icons + observers
         const init = () => {
             buildEndpoints();
@@ -1067,6 +1356,7 @@
             wireReveal();
             wireCopy();
             wireFooterYear();
+            wireDetailDrawer();
             // Lucide loads with defer; ensure icons render after dynamic content is in DOM
             const renderIcons = () => window.lucide?.createIcons();
             if (window.lucide) renderIcons();
