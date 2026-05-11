@@ -811,12 +811,12 @@
                 </div>
             </article>
 
-            <!-- FLAGSHIP: Omni_Stocks -->
+            <!-- FLAGSHIP: Finance Prediction System -->
             <article class="reveal mb-16 gradient-border p-8 md:p-12 rounded-3xl">
                 <div class="grid lg:grid-cols-12 gap-10 items-start">
                     <div class="lg:col-span-6">
-                        <span class="kicker mb-4"><i data-lucide="line-chart" class="w-3.5 h-3.5"></i> Featured · Production-Ready</span>
-                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-4 mb-4">Omni_Stocks <span class="text-gray-500 font-normal">— Multi-Asset Market Prediction System</span></h3>
+                        <span class="kicker mb-4"><i data-lucide="line-chart" class="w-3.5 h-3.5"></i> Featured · Personal Project</span>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-4 mb-4">Finance Prediction System <span class="text-gray-500 font-normal">— Multi-Asset Equities Forecasting</span></h3>
                         <p class="text-gray-400 leading-relaxed mb-5">A regime-aware, multi-LLM market prediction stack focused on <span class="text-white">US equities</span> with extended coverage across NSE, crypto, and FX. Combines technical, fundamental, sentiment, and macro signals through a 4-pillar rubric layered on top of <span class="text-white">isotonic-calibrated XGBoost</span> classifiers, gated by a 4-state HMM regime engine. Runs locally on RTX 4070 Super with Google Drive cold storage and <span class="text-white">Snowflake Cortex</span> for heavy LLM synthesis on demand.</p>
                         <p class="text-xs text-gray-500 font-mono mb-6">30 US equities · 64 total instruments · 16+ ingest sources · 9-tab Streamlit dashboard</p>
                         <div class="flex flex-wrap gap-2">
@@ -829,7 +829,7 @@
                             <span class="tag-pill">Streamlit</span>
                             <span class="tag-pill">Parquet · rclone</span>
                         </div>
-                        <button type="button" class="view-details" data-project="omnistocks" aria-label="Open Omni_Stocks deep-dive">
+                        <button type="button" class="view-details" data-project="omnistocks" aria-label="Open Finance Prediction System deep-dive">
                             View deep-dive <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </button>
                     </div>
@@ -1286,7 +1286,7 @@
                 ]
             },
             omnistocks: {
-                title: 'Omni_Stocks',
+                title: 'Finance Prediction System',
                 subtitle: 'Multi-asset market prediction — US equities first, regime-aware, multi-LLM',
                 sections: [
                     { num: '01', heading: 'What it does', body: '<p>Predicts 5-day directional moves for <strong>30 US large caps</strong> (the focus universe), plus <strong>20 NSE</strong> tickers, <strong>10 crypto</strong>, and <strong>4 FX</strong> pairs. Output is a conviction-gated signal — no signal is always better than a weak one.</p>' },
@@ -1294,7 +1294,7 @@
                     { num: '03', heading: '4-state HMM regime engine', body: '<p>The same XGBoost output behaves differently in different markets. A 4-state Hidden Markov Model labels each day as <strong>Bull / Bear / Chop / Crisis</strong>. The 4-pillar rubric (technical, fundamental, sentiment, macro) is weighted by the live regime, and the conviction gate threshold is tightened in <code>Crisis</code>.</p>' },
                     { num: '04', heading: 'Ingest layer (US-led)', body: '<p>16+ sources, with the US-equity feeds doing the heavy lifting:</p><ul><li><strong>Polygon</strong> · OHLCV + intraday for US equities and FX.</li><li><strong>EDGAR</strong> · SEC filings → fundamentals.</li><li><strong>FRED</strong> · macro reference series (rates, CPI, unemployment, etc.).</li><li><strong>NewsAPI</strong>, <strong>Marketaux</strong>, <strong>GDELT</strong> · global news coverage.</li><li><strong>Reddit</strong>, <strong>StockTwits</strong> · retail sentiment.</li><li><strong>NSE bhavcopy / NSE OI / SEBI insider</strong> · India coverage.</li></ul>' },
                     { num: '05', heading: 'Multi-LLM router for narrative', body: '<p>The numerical layer makes the call; the LLM layer explains it. Six backends behind one router with diskcache + per-backend rate limiting:</p><ul><li><strong>FinBERT</strong> for sentiment scoring (free, fast).</li><li><strong>Ollama</strong> for local synthesis.</li><li><strong>OpenRouter</strong> · free-tier models for breadth.</li><li><strong>Snowflake Cortex</strong> · paid tier for heavy synthesis when quality matters.</li><li><strong>Gemini</strong>, <strong>Groq</strong> · alternates with their own quotas.</li></ul><p>Routes are configured in <code>llm_routes.yaml</code> — primary → fallback chains with per-route caching keys.</p>' },
-                    { num: '06', heading: 'Storage + dashboard', body: '<p>Tier-aware Parquet I/O: hot/processed lives on local SSD, cold/raw lives on Google Drive mounted via <strong>rclone</strong> at <code>Z:\\Omni_Stocks\\</code>. The split is invisible to callers — everything routes through <code>omni.storage.tiers</code> with a graceful local fallback. The 9-tab Streamlit dashboard renders predictions, regime overlays, watchlists, and LLM-generated explanations.</p>' },
+                    { num: '06', heading: 'Storage + dashboard', body: '<p>Tier-aware Parquet I/O: hot/processed lives on local SSD, cold/raw lives on Google Drive mounted via <strong>rclone</strong>. The split is invisible to callers — everything routes through a tier-aware storage layer with a graceful local fallback. The 9-tab Streamlit dashboard renders predictions, regime overlays, watchlists, and LLM-generated explanations.</p>' },
                     { num: '07', heading: 'Realistic accuracy', body: '<p>This is research code, not hindsight bias dressed up as alpha:</p><ul><li>Overall directional accuracy: <strong>54–60%</strong>.</li><li>Top-decile gated signals: <strong>65–72%</strong>.</li><li>Calibration Brier score: <strong>≤ 0.22</strong>.</li></ul><p class="text-xs text-gray-500 italic" style="margin-top:1rem">Personal research project. Not investment advice.</p>' }
                 ]
             }
